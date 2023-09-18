@@ -6,11 +6,18 @@ fetch(
     .then(d => {
         const city = d.city.name;
         const list = d.list;
-        container.innerHTML = d.city.name;
+        container.innerHTML = city;
 
-        list.forEach(forcast => {
-            container.innerHTML += container.innerHTML += forcast.main.temp + "<br>";
-        });
+        list.forEach(element => {
+            console.log(element);
+            container.innerHTML += `
+                <div class="weather">
+                    <div class="date">${element.dt_txt}</div>
+                    <div class="temp">${element.main.temp}</div>
+                    <div class="wind">${element.wind.speed}</div>
+                </div>
+            `;
+        })
 
         console.log(d);
     });
